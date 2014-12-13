@@ -1,7 +1,6 @@
 module Utilities
 
-// the F# map type is immutable, and recreating them often is very slow
-// use the .NET Dictionary as our backing cache instead
+open System
 open System.Collections.Generic
 
 let memoize f =
@@ -16,3 +15,14 @@ let memoize f =
             let calcResult = f x
             cache.[x] <- calcResult
             calcResult
+
+let parseFile fileName =
+    let parseLine (line : string) =
+        line.Split [|' '|] |> Seq.map (fun x -> Int32.Parse(x)) |> Seq.toArray
+
+    let fileLines = System.IO.File.ReadLines(fileName)
+    Seq.map (fun x -> parseLine x) fileLines
+
+let writeLineToFile fileName elements = 
+    let lineToWrite = Array.fold (fun str elem -> str + " " + elem.ToString()) "" elements
+    System.IO.File.WriteAllText(fileName, lineToWrite.Trim())
