@@ -1,13 +1,4 @@
-open System
-
-let parseFile = 
-    let fileLines = System.IO.File.ReadLines("rosalind_bins.txt")
-
-    let parseLine lineNum =
-        let line = Seq.nth lineNum fileLines
-        line.Split [|' '|] |> Seq.map (fun x -> Int32.Parse(x)) |> Seq.toArray
-    
-    (parseLine 2, parseLine 3)
+﻿open Utilities.IO
 
 let binarySearch value (sortedArray:_[]) =
     let rec binarySearchHelper startIndex stopIndex =
@@ -24,10 +15,11 @@ let binarySearch value (sortedArray:_[]) =
                 index + 1
     binarySearchHelper -1 (Array.length sortedArray)
 
-let sortedArray, numsToFind = parseFile
-
-let indexes = Array.map (fun num -> binarySearch num sortedArray) numsToFind
-
-let result = Array.fold (fun str (num : Int32) -> str + " " + num.ToString()) "" indexes
-
-System.IO.File.WriteAllText("rosalind_bind_resultset.txt", result.Trim())
+[<EntryPoint>]
+let main argv = 
+    let fileLines = parseFile "rosalind_bins.txt"
+    let sortedArray = Seq.nth 2 fileLines
+    let numsToFind = Seq.nth 3 fileLines
+    let indexes = Array.map (fun num -> binarySearch num sortedArray) numsToFind
+    writeLineToFile "rosalind_bins_resultset.txt" indexes
+    0

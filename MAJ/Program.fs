@@ -1,6 +1,4 @@
-#load "../Utilities.fs"
-
-open System
+﻿open System
 open System.Collections
 open Utilities
 
@@ -21,7 +19,9 @@ let findMajorityElement lineArr =
     | Some v -> v
     | None -> -1
 
-let fileLines = Seq.skip 1 (Utilities.parseFile "input.txt")
-let majorityElements = Seq.map (fun line -> findMajorityElement line) fileLines
-
-Utilities.writeLineToFile "output.txt" (Seq.toArray majorityElements)
+[<EntryPoint>]
+let main argv = 
+    let fileLines = Seq.skip 1 (IO.parseFile "input.txt")
+    let majorityElements = Seq.map (fun line -> findMajorityElement line) fileLines
+    IO.writeLineToFile "output.txt" (Seq.toArray majorityElements)
+    0 // return an integer exit code

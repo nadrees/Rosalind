@@ -1,3 +1,5 @@
+﻿namespace Utilities
+
 module Seq =
     let fibonacci startWith0 = 
         let rec fibHelper n0 n1 =
@@ -8,8 +10,3 @@ module Seq =
             }
         let first = if startWith0 then 0 else 1
         seq { yield first; yield 1; yield! fibHelper first 1 }
-
-let fibs = Seq.fibonacci true
-let result = Seq.nth 23 fibs
-
-printfn "%i" result
