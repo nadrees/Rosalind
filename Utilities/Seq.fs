@@ -10,3 +10,8 @@ module Seq =
             }
         let first = if startWith0 then 0 else 1
         seq { yield first; yield 1; yield! fibHelper first 1 }
+
+    let HammingDistance seq1 seq2 = 
+        Seq.zip seq1 seq2
+        |> Seq.map (fun (x1, x2) -> if x1 <> x2 then 1 else 0)
+        |> Seq.sum
