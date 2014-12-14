@@ -41,3 +41,9 @@ module Symbols =
 
     let PrintString symbolSeq =
         Seq.fold (fun str s -> sprintf "%s%A" str s) "" symbolSeq
+
+    let ReverseCompliment dnaSeq = 
+        Seq.toArray dnaSeq
+        |> Array.rev
+        |> Array.toSeq
+        |> Seq.map DNAtoComplement
