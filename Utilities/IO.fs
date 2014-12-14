@@ -3,6 +3,12 @@
 open System
 
 module IO =
+    let readFile fileName =
+        System.IO.File.ReadAllText(fileName)
+
+    let writeFile fileName contents =
+        System.IO.File.WriteAllText(fileName, contents)
+
     let parseFile fileName =
         let parseLine (line : string) =
             line.Split [|' '|] |> Seq.map (fun x -> Int32.Parse(x)) |> Seq.toArray

@@ -26,3 +26,18 @@ module Symbols =
         | 'G' -> (true, Some(RNA.G))
         | 'U' -> (true, Some(RNA.U))
         | _ -> (false, None)
+
+    let ParseDNACharacter c =
+        match TryParseDNACharacter c with
+        | (true, Some s) -> s
+        | _ -> raise (new System.ArgumentException("Invalid character " + c.ToString()))
+
+    let DNAtoComplement d =
+        match d with 
+        | DNA.A -> DNA.T
+        | DNA.T -> DNA.A
+        | DNA.C -> DNA.G
+        | DNA.G -> DNA.C
+
+    let PrintString symbolSeq =
+        Seq.fold (fun str s -> sprintf "%s%A" str s) "" symbolSeq
