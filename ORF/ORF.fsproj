@@ -80,6 +80,11 @@
       <Project>{18f6d79c-bd3c-472f-8b36-fc5b1c55820c}</Project>
       <Private>True</Private>
     </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.fsproj">
+      <Name>Utilities</Name>
+      <Project>{4187b46c-fa2d-4d02-a993-b2b61e4a2bff}</Project>
+      <Private>True</Private>
+    </ProjectReference>
   </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

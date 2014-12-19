@@ -1,5 +1,4 @@
-﻿open Bio.Records
-open Bio.Symbols
+﻿open Bio.DNA
 open ImperativeUtilities
 
 type GCContentRecord = {

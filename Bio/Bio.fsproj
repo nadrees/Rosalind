@@ -47,8 +47,9 @@
     <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Symbols.fs" />
-    <Compile Include="Records.fs" />
+    <Compile Include="AminoAcid.fs" />
+    <Compile Include="RNA.fs" />
+    <Compile Include="DNA.fs" />
   </ItemGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>

@@ -6,9 +6,9 @@ namespace ImperativeUtilities
 {
     public class Utilities
     {
-        public static IEnumerable<Bio.Records.DNARecord> ParseLinesToRecords(IEnumerable<String> lines)
+        public static IEnumerable<Bio.DNA.DNARecord> ParseLinesToRecords(IEnumerable<String> lines)
         {
-            var records = new List<Bio.Records.DNARecord>();
+            var records = new List<Bio.DNA.DNARecord>();
 
             String name = null, dnaSequence = String.Empty;
 
@@ -30,10 +30,10 @@ namespace ImperativeUtilities
             return records;
         }
 
-        private static Bio.Records.DNARecord CreateDNARecord(String name, String dnaSequence)
+        private static Bio.DNA.DNARecord CreateDNARecord(String name, String dnaSequence)
         {
-            var dna = dnaSequence.Select(c => Bio.Symbols.ParseDNACharacter(c));
-            return new Bio.Records.DNARecord(name, dna);
+            var dna = dnaSequence.Select(c => Bio.DNA.ParseDNACharacter(c));
+            return new Bio.DNA.DNARecord(name, dna);
         }
     }
 }

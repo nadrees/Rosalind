@@ -15,3 +15,6 @@ module Seq =
         Seq.zip seq1 seq2
         |> Seq.map (fun (x1, x2) -> if x1 <> x2 then 1 else 0)
         |> Seq.sum
+
+    let PrintString symbolSeq =
+        Seq.fold (fun str s -> sprintf "%s%A" str s) "" symbolSeq

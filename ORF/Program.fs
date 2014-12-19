@@ -1,5 +1,6 @@
 ﻿open ImperativeUtilities
-open Bio.Symbols
+open Bio.DNA
+open Utilities
 
 [<EntryPoint>]
 let main argv = 
@@ -11,7 +12,7 @@ let main argv =
                       inverseString;
                       Seq.skip 1 inverseString;
                       Seq.skip 2 inverseString;]
-    let results = Seq.collect DNASeqToProteinStrings allStrings |> Seq.map PrintString |> Seq.distinct
+    let results = Seq.collect DNASeqToProteinStrings allStrings |> Seq.map Seq.PrintString |> Seq.distinct
     System.IO.File.WriteAllLines("output.txt", results)
     printfn "Done"
     System.Console.ReadKey() |> ignore

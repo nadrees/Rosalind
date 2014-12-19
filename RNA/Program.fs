@@ -1,4 +1,4 @@
-﻿open Bio.Symbols
+﻿open Bio.DNA
 
 let parseCharacter c =
     match TryParseDNACharacter c with
