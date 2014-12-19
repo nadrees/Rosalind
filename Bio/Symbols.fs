@@ -24,7 +24,7 @@ module Symbols =
         | (RNA.A, RNA.U, RNA.U) | (RNA.A, RNA.U, RNA.C) | (RNA.A, RNA.U, RNA.A) -> AminoAcid.I
         | (RNA.A, RNA.A, RNA.A) | (RNA.A, RNA.A, RNA.G) -> AminoAcid.K
         | (RNA.U, RNA.U, RNA.A) | (RNA.U, RNA.U, RNA.G) | (RNA.C, RNA.U, RNA.U) | (RNA.C, RNA.U, RNA.C) | (RNA.C, RNA.U, RNA.A) | (RNA.C, RNA.U, RNA.G) -> AminoAcid.L
-        | (RNA.A, RNA.U, RNA.G) -> AminoAcid.M
+        | (RNA.A, RNA.U, RNA.G) -> AminoAcid.M // start codon
         | (RNA.A, RNA.A, RNA.U) | (RNA.A, RNA.A, RNA.C) -> AminoAcid.N
         | (RNA.C, RNA.C, RNA.U) | (RNA.C, RNA.C, RNA.C) | (RNA.C, RNA.C, RNA.A) | (RNA.C, RNA.C, RNA.G) -> AminoAcid.P
         | (RNA.C, RNA.A, RNA.A) | (RNA.C, RNA.A, RNA.G) -> AminoAcid.Q
@@ -36,7 +36,7 @@ module Symbols =
         | (RNA.U, RNA.A, RNA.U) | (RNA.U, RNA.A, RNA.C) -> AminoAcid.Y
         | (RNA.U, RNA.A, RNA.A) | (RNA.U, RNA.A, RNA.G) | (RNA.U, RNA.G, RNA.A) -> AminoAcid.Stop
 
-    let RNASeqToRNACodons (rnaSeq : seq<RNA>) : seq<(RNA * RNA * RNA)> =
+    let rec RNASeqToRNACodons (rnaSeq : seq<RNA>) : seq<(RNA * RNA * RNA)> =
         let tupleToCodon (tuple : (int * seq<int * RNA>)) =
             let unpackRNA rnaTuple = 
                 match rnaTuple with
@@ -48,14 +48,35 @@ module Symbols =
             let thirdRNA = Seq.nth 2 groupedRNA
             (unpackRNA firstRNA, unpackRNA secondRNA, unpackRNA thirdRNA)
 
-        let seqLength = (Seq.toList rnaSeq).Length
-        if seqLength % 3 <> 0 then
-            raise (new System.ArgumentException(sprintf "RNA Sequence length must be a multiple of 3. Length was %i" seqLength))
-        else
+        let length = (Seq.toList rnaSeq).Length
+        match (length % 3) with
+        | 0 ->
             let indexedRNA = Seq.mapi (fun index rna -> (index, rna)) rnaSeq
             let groupedRNA = Seq.groupBy (fun tuple -> (fst (tuple)) / 3) indexedRNA
             let rnaCodons = Seq.map tupleToCodon groupedRNA
             rnaCodons
+        | x ->
+            RNASeqToRNACodons (Seq.take (length - x) rnaSeq)
+
+    let AcidSeqToProteinStrings acidSeq = 
+        let rec ReadProteinStrings acidSeq currentStrings = 
+            match Seq.tryFindIndex (fun a -> a = AminoAcid.M) acidSeq with
+            | None -> currentStrings
+            | Some startIndex ->
+                let startChoppedSeq = Seq.skip startIndex acidSeq
+                match Seq.tryFindIndex (fun a -> a = AminoAcid.Stop) startChoppedSeq with
+                | None -> currentStrings
+                | Some stopIndex ->
+                    let choppedSeq = Seq.take stopIndex startChoppedSeq
+                    let remainder = Seq.skip 1 startChoppedSeq
+                    ReadProteinStrings remainder (choppedSeq::currentStrings)
+        ReadProteinStrings acidSeq []
+
+    let RNASeqToProteinStrings : (seq<RNA> -> seq<AminoAcid> list) = 
+        RNASeqToRNACodons >> Seq.map RNAtoAminoAcid >> AcidSeqToProteinStrings
+
+    let DNASeqToProteinStrings : (seq<DNA> -> seq<AminoAcid> list) =
+        Seq.map DNAtoRNA >> RNASeqToProteinStrings
 
     let TryParseDNACharacter c =
         match c with
