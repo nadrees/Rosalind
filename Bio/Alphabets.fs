@@ -6,4 +6,4 @@ module Alphabets =
     [<RequireQualifiedAccess>]
     type RNA = A | C | G | U
     [<RequireQualifiedAccess>]
-    type AminoAcid = A | C | D | E | F | G | H | I | K | L | M | N | P | Q | R | S | T | U | V | W | Y | Stop
+    type AminoAcid = A | C | D | E | F | G | H | I | K | L | M | N | P | Q | R | S | T | V | W | Y | Stop

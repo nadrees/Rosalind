@@ -22,7 +22,6 @@ module AminoAcid =
         | 'R' -> Some(AminoAcid.R)
         | 'S' -> Some(AminoAcid.S)
         | 'T' -> Some(AminoAcid.T)
-        | 'U' -> Some(AminoAcid.U)
         | 'V' -> Some(AminoAcid.V)
         | 'W' -> Some(AminoAcid.W)
         | 'Y' -> Some(AminoAcid.Y)
@@ -32,6 +31,30 @@ module AminoAcid =
         match TryParseAminoAcid c with
         | Some s -> s
         | None -> raise(new System.ArgumentException(sprintf "Unable to parse amino acid %s" (c.ToString())))
+
+    let AminoAcidToRNACodons aa =
+        match aa with
+        | AminoAcid.A -> [(RNA.G, RNA.C, RNA.U); (RNA.G, RNA.C, RNA.C); (RNA.G, RNA.C, RNA.A); (RNA.G, RNA.C, RNA.G)]
+        | AminoAcid.C -> [(RNA.U, RNA.G, RNA.U); (RNA.U, RNA.G, RNA.C)]
+        | AminoAcid.D -> [(RNA.G, RNA.A, RNA.U); (RNA.G, RNA.A, RNA.C)]
+        | AminoAcid.E -> [(RNA.G, RNA.A, RNA.A); (RNA.G, RNA.A, RNA.G)]
+        | AminoAcid.F -> [(RNA.U, RNA.U, RNA.U); (RNA.U, RNA.U, RNA.C)]
+        | AminoAcid.G -> [(RNA.G, RNA.G, RNA.U); (RNA.G, RNA.G, RNA.C); (RNA.G, RNA.G, RNA.A); (RNA.G, RNA.G, RNA.G)]
+        | AminoAcid.H -> [(RNA.C, RNA.A, RNA.U); (RNA.C, RNA.A, RNA.C)]
+        | AminoAcid.I -> [(RNA.A, RNA.U, RNA.U); (RNA.A, RNA.U, RNA.C); (RNA.A, RNA.U, RNA.A)]
+        | AminoAcid.K -> [(RNA.A, RNA.A, RNA.A); (RNA.A, RNA.A, RNA.G)]
+        | AminoAcid.L -> [(RNA.U, RNA.U, RNA.A); (RNA.U, RNA.U, RNA.G); (RNA.C, RNA.U, RNA.U); (RNA.C, RNA.U, RNA.C); (RNA.C, RNA.U, RNA.A); (RNA.C, RNA.U, RNA.G)]
+        | AminoAcid.M -> [(RNA.A, RNA.U, RNA.G)] // start codon
+        | AminoAcid.N -> [(RNA.A, RNA.A, RNA.U); (RNA.A, RNA.A, RNA.C)]
+        | AminoAcid.P -> [(RNA.C, RNA.C, RNA.U); (RNA.C, RNA.C, RNA.C); (RNA.C, RNA.C, RNA.A); (RNA.C, RNA.C, RNA.G)]
+        | AminoAcid.Q -> [(RNA.C, RNA.A, RNA.A); (RNA.C, RNA.A, RNA.G)]
+        | AminoAcid.R -> [(RNA.C, RNA.G, RNA.U); (RNA.C, RNA.G, RNA.C); (RNA.C, RNA.G, RNA.A); (RNA.C, RNA.G, RNA.G); (RNA.A, RNA.G, RNA.A); (RNA.A, RNA.G, RNA.G)]
+        | AminoAcid.S -> [(RNA.U, RNA.C, RNA.U); (RNA.U, RNA.C, RNA.C); (RNA.U, RNA.C, RNA.A); (RNA.U, RNA.C, RNA.G); (RNA.A, RNA.G, RNA.U); (RNA.A, RNA.G, RNA.C)]
+        | AminoAcid.T -> [(RNA.A, RNA.C, RNA.U); (RNA.A, RNA.C, RNA.C); (RNA.A, RNA.C, RNA.A); (RNA.A, RNA.C, RNA.G)]
+        | AminoAcid.V -> [(RNA.G, RNA.U, RNA.U); (RNA.G, RNA.U, RNA.C); (RNA.G, RNA.U, RNA.A); (RNA.G, RNA.U, RNA.G)]
+        | AminoAcid.W -> [(RNA.U, RNA.G, RNA.G)]
+        | AminoAcid.Y -> [(RNA.U, RNA.A, RNA.U); (RNA.U, RNA.A, RNA.C)]
+        | AminoAcid.Stop -> [(RNA.U, RNA.A, RNA.A); (RNA.U, RNA.A, RNA.G); (RNA.U, RNA.G, RNA.A)]
 
     let GetMonoisotopicMass acid = 
         match acid with
