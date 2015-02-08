@@ -1,31 +1,31 @@
 ﻿namespace Bio
 
-module AminoAcid =
-    type AminoAcid = A | C | D | E | F | G | H | I | K | L | M | N | P | Q | R | S | T | U | V | W | Y | Stop
+open Alphabets
 
+module AminoAcid =
     let TryParseAminoAcid c =
         match c with
-        | 'A' -> Some(A)
-        | 'C' -> Some(C)
-        | 'D' -> Some(D)
-        | 'E' -> Some(E)
-        | 'F' -> Some(F)
-        | 'G' -> Some(G)
-        | 'H' -> Some(H)
-        | 'I' -> Some(I)
-        | 'K' -> Some(K)
-        | 'L' -> Some(L)
-        | 'M' -> Some(M)
-        | 'N' -> Some(N)
-        | 'P' -> Some(P)
-        | 'Q' -> Some(Q)
-        | 'R' -> Some(R)
-        | 'S' -> Some(S)
-        | 'T' -> Some(T)
-        | 'U' -> Some(U)
-        | 'V' -> Some(V)
-        | 'W' -> Some(W)
-        | 'Y' -> Some(Y)
+        | 'A' -> Some(AminoAcid.A)
+        | 'C' -> Some(AminoAcid.C)
+        | 'D' -> Some(AminoAcid.D)
+        | 'E' -> Some(AminoAcid.E)
+        | 'F' -> Some(AminoAcid.F)
+        | 'G' -> Some(AminoAcid.G)
+        | 'H' -> Some(AminoAcid.H)
+        | 'I' -> Some(AminoAcid.I)
+        | 'K' -> Some(AminoAcid.K)
+        | 'L' -> Some(AminoAcid.L)
+        | 'M' -> Some(AminoAcid.M)
+        | 'N' -> Some(AminoAcid.N)
+        | 'P' -> Some(AminoAcid.P)
+        | 'Q' -> Some(AminoAcid.Q)
+        | 'R' -> Some(AminoAcid.R)
+        | 'S' -> Some(AminoAcid.S)
+        | 'T' -> Some(AminoAcid.T)
+        | 'U' -> Some(AminoAcid.U)
+        | 'V' -> Some(AminoAcid.V)
+        | 'W' -> Some(AminoAcid.W)
+        | 'Y' -> Some(AminoAcid.Y)
         | _ -> None
 
     let ParseAminoAcid c =
@@ -35,26 +35,26 @@ module AminoAcid =
 
     let GetMonoisotopicMass acid = 
         match acid with
-        | A -> 71.03711
-        | C -> 103.00919
-        | D -> 115.02694
-        | E -> 129.04259
-        | F -> 147.06841
-        | G -> 57.02146
-        | H -> 137.05891
-        | I -> 113.08406
-        | K -> 128.09496
-        | L -> 113.08406
-        | M -> 131.04049
-        | N -> 114.04293
-        | P -> 97.05276
-        | Q -> 128.05858
-        | R -> 156.10111
-        | S -> 87.03203
-        | T -> 101.04768
-        | V -> 99.06841
-        | W -> 186.07931
-        | Y -> 163.06333
+        | AminoAcid.A -> 71.03711
+        | AminoAcid.C -> 103.00919
+        | AminoAcid.D -> 115.02694
+        | AminoAcid.E -> 129.04259
+        | AminoAcid.F -> 147.06841
+        | AminoAcid.G -> 57.02146
+        | AminoAcid.H -> 137.05891
+        | AminoAcid.I -> 113.08406
+        | AminoAcid.K -> 128.09496
+        | AminoAcid.L -> 113.08406
+        | AminoAcid.M -> 131.04049
+        | AminoAcid.N -> 114.04293
+        | AminoAcid.P -> 97.05276
+        | AminoAcid.Q -> 128.05858
+        | AminoAcid.R -> 156.10111
+        | AminoAcid.S -> 87.03203
+        | AminoAcid.T -> 101.04768
+        | AminoAcid.V -> 99.06841
+        | AminoAcid.W -> 186.07931
+        | AminoAcid.Y -> 163.06333
         | _ -> raise(new System.ArgumentException(sprintf "Unknown acid %A" acid))
 
     let GetMonoisotopicMassOfString : (seq<AminoAcid> -> float) =

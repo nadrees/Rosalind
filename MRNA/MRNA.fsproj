@@ -5,14 +5,14 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>46372159-c917-4d5e-a5d8-6e8d164e86bc</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>Bio</RootNamespace>
-    <AssemblyName>Bio</AssemblyName>
+    <ProjectGuid>24e0348c-8f0d-4228-aba3-d707cefe0bef</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>MRNA</RootNamespace>
+    <AssemblyName>MRNA</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFSharpCoreVersion>4.3.1.0</TargetFSharpCoreVersion>
-    <Name>Bio</Name>
+    <Name>MRNA</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,10 +23,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <WarningLevel>3</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DocumentationFile>bin\Debug\Bio.XML</DocumentationFile>
+    <DocumentationFile>bin\Debug\MRNA.XML</DocumentationFile>
     <Prefer32Bit>true</Prefer32Bit>
-    <OtherFlags>
-    </OtherFlags>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -36,7 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <WarningLevel>3</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DocumentationFile>bin\Release\Bio.XML</DocumentationFile>
+    <DocumentationFile>bin\Release\MRNA.XML</DocumentationFile>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
@@ -49,10 +47,8 @@
     <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Alphabets.fs" />
-    <Compile Include="AminoAcid.fs" />
-    <Compile Include="RNA.fs" />
-    <Compile Include="DNA.fs" />
+    <Compile Include="Program.fs" />
+    <None Include="App.config" />
   </ItemGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>

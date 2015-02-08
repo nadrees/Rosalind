@@ -1,8 +1,8 @@
 ﻿namespace Bio
 
-module DNA = 
-    type DNA = A | G | T | C
+open Alphabets
 
+module DNA = 
     type DNARecord = {
         Name : string
         DNAString : seq<DNA>
@@ -54,7 +54,7 @@ module DNA =
         |> Array.toSeq
         |> Seq.map DNAtoComplement
 
-    let DNASeqToProteinStrings : (seq<DNA> -> seq<Bio.AminoAcid.AminoAcid> list) =
+    let DNASeqToProteinStrings : (seq<DNA> -> seq<AminoAcid> list) =
         Seq.map DNAtoRNA >> Bio.RNA.RNASeqToProteinStrings
 
     let DNASeqsToProfileMatrix dnaSeqs = 
@@ -68,10 +68,10 @@ module DNA =
         let DNASeqToProfileMatrix dnaSeq = 
             let DNAToProfileColumn d =
                 match d with
-                | A -> { DefaultProfileColumn with ACount = 1 }
-                | C -> { DefaultProfileColumn with CCount = 1 }
-                | G -> { DefaultProfileColumn with GCount = 1 }
-                | T -> { DefaultProfileColumn with TCount = 1 }
+                | DNA.A -> { DefaultProfileColumn with ACount = 1 }
+                | DNA.C -> { DefaultProfileColumn with CCount = 1 }
+                | DNA.G -> { DefaultProfileColumn with GCount = 1 }
+                | DNA.T -> { DefaultProfileColumn with TCount = 1 }
             Seq.map DNAToProfileColumn dnaSeq
         let profiles = Seq.map DNASeqToProfileMatrix dnaSeqs
         Seq.reduce addSeqs profiles |> Seq.toList
@@ -81,11 +81,11 @@ module DNA =
             match column with 
             | _ when column.ACount >= column.CCount &&
                      column.ACount >= column.GCount &&
-                     column.ACount >= column.TCount -> A
+                     column.ACount >= column.TCount -> DNA.A
             | _ when column.CCount >= column.GCount &&
-                     column.CCount >= column.TCount -> C
-            | _ when column.GCount >= column.TCount -> G
-            | _ -> T
+                     column.CCount >= column.TCount -> DNA.C
+            | _ when column.GCount >= column.TCount -> DNA.G
+            | _ -> DNA.T
         Seq.map GetConsensusForColumn profile
 
     let PrintDNAProfile profile = 

@@ -1,8 +1,8 @@
 ﻿namespace Bio
 
-module RNA =
-    type RNA = A | C | G | U
+open Alphabets
 
+module RNA =
     let TryParseRNACharacter c =
         match c with
         | 'A' -> (true, Some(RNA.A))
@@ -62,5 +62,5 @@ module RNA =
         | x ->
             RNASeqToRNACodons (Seq.take (length - x) rnaSeq)
 
-    let RNASeqToProteinStrings : (seq<RNA> -> seq<Bio.AminoAcid.AminoAcid> list) = 
+    let RNASeqToProteinStrings : (seq<RNA> -> seq<AminoAcid> list) = 
         RNASeqToRNACodons >> Seq.map RNAtoAminoAcid >> Bio.AminoAcid.AcidSeqToProteinStrings

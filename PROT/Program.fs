@@ -1,4 +1,5 @@
-﻿open Bio.RNA
+﻿open Bio.Alphabets
+open Bio.RNA
 open Bio.AminoAcid
 open Utilities
 
