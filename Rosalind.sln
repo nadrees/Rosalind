@@ -53,6 +53,15 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FIBD", "FIBD\FIBD.fsproj", 
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MRNA", "MRNA\MRNA.fsproj", "{24E0348C-8F0D-4228-ABA3-D707CEFE0BEF}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "LIA", "LIA\LIA.fsproj", "{A3FAC2DC-56BB-466D-A22E-E9AAFBA4B52D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7F8E737E-4BD4-4C18-A689-641FC03EE533}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -151,6 +160,10 @@ Global
 		{24E0348C-8F0D-4228-ABA3-D707CEFE0BEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24E0348C-8F0D-4228-ABA3-D707CEFE0BEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24E0348C-8F0D-4228-ABA3-D707CEFE0BEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3FAC2DC-56BB-466D-A22E-E9AAFBA4B52D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3FAC2DC-56BB-466D-A22E-E9AAFBA4B52D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3FAC2DC-56BB-466D-A22E-E9AAFBA4B52D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3FAC2DC-56BB-466D-A22E-E9AAFBA4B52D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -176,5 +189,6 @@ Global
 		{8320329F-82F0-4290-B4A0-B5D711F2157F} = {788966CC-EFEC-4697-BDB5-464E0F8F9F29}
 		{2D24439D-D538-45BE-A7F3-AF1F7EEA0A50} = {788966CC-EFEC-4697-BDB5-464E0F8F9F29}
 		{24E0348C-8F0D-4228-ABA3-D707CEFE0BEF} = {788966CC-EFEC-4697-BDB5-464E0F8F9F29}
+		{A3FAC2DC-56BB-466D-A22E-E9AAFBA4B52D} = {788966CC-EFEC-4697-BDB5-464E0F8F9F29}
 	EndGlobalSection
 EndGlobal
