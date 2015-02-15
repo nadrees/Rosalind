@@ -18,3 +18,25 @@ module Seq =
 
     let PrintString symbolSeq =
         Seq.fold (fun str s -> sprintf "%s%A" str s) "" symbolSeq
+
+    let PrefixOfLength length str = 
+        Seq.take length str
+
+    let SuffixOfLength length str =
+        Seq.toList str 
+        |> List.rev 
+        |> Seq.take length 
+        |> Seq.toList 
+        |> List.rev 
+        |> List.toSeq
+
+    let AllPairs elems =
+        let CreatePairsWith elem = 
+            Seq.filter (fun e -> e <> elem) elems
+            |> Seq.map (fun e -> (elem, e))
+        Seq.map (fun e -> CreatePairsWith e) elems |> Seq.concat
+
+    let SeqsAreEqual seq1 seq2 =
+        Seq.zip seq1 seq2
+        |> Seq.map (fun (a, b) -> a = b)
+        |> Seq.fold (&&) true

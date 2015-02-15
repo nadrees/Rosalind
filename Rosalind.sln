@@ -62,6 +62,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7F8E73
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "GRPH", "GRPH\GRPH.fsproj", "{367AF6D6-C0AB-4DB7-87CA-56321B747750}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -164,6 +166,10 @@ Global
 		{A3FAC2DC-56BB-466D-A22E-E9AAFBA4B52D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3FAC2DC-56BB-466D-A22E-E9AAFBA4B52D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3FAC2DC-56BB-466D-A22E-E9AAFBA4B52D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{367AF6D6-C0AB-4DB7-87CA-56321B747750}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{367AF6D6-C0AB-4DB7-87CA-56321B747750}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{367AF6D6-C0AB-4DB7-87CA-56321B747750}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{367AF6D6-C0AB-4DB7-87CA-56321B747750}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -190,5 +196,6 @@ Global
 		{2D24439D-D538-45BE-A7F3-AF1F7EEA0A50} = {788966CC-EFEC-4697-BDB5-464E0F8F9F29}
 		{24E0348C-8F0D-4228-ABA3-D707CEFE0BEF} = {788966CC-EFEC-4697-BDB5-464E0F8F9F29}
 		{A3FAC2DC-56BB-466D-A22E-E9AAFBA4B52D} = {788966CC-EFEC-4697-BDB5-464E0F8F9F29}
+		{367AF6D6-C0AB-4DB7-87CA-56321B747750} = {788966CC-EFEC-4697-BDB5-464E0F8F9F29}
 	EndGlobalSection
 EndGlobal
