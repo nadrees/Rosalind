@@ -6,28 +6,34 @@ namespace ImperativeUtilities
 {
     public class Utilities
     {
-        public static IEnumerable<Bio.DNA.DNARecord> ParseLinesToRecords(IEnumerable<String> lines)
+        public static IEnumerable<Record> ParseLines(IEnumerable<String> lines)
         {
-            var records = new List<Bio.DNA.DNARecord>();
+            lines = lines.Select(l => l.Trim());
 
-            String name = null, dnaSequence = String.Empty;
+            var records = new List<Record>();
 
+            String name = null, sequence = String.Empty;
             foreach (var line in lines)
             {
                 if (line.Contains('>'))
                 {
                     if (name != null)
-                        records.Add(CreateDNARecord(name, dnaSequence));
+                        records.Add(new Record { Name = name, Str = sequence });
 
                     name = line.Substring(1);
-                    dnaSequence = String.Empty;
+                    sequence = String.Empty;
                 }
                 else
-                    dnaSequence += line;
+                    sequence += line;
             }
-            records.Add(CreateDNARecord(name, dnaSequence));
+            records.Add(new Record { Name = name, Str = sequence });
 
             return records;
+        }
+
+        public static IEnumerable<Bio.DNA.DNARecord> ParseLinesToDNARecords(IEnumerable<String> lines)
+        {
+            return ParseLines(lines).Select(r => CreateDNARecord(r.Name, r.Str));
         }
 
         private static Bio.DNA.DNARecord CreateDNARecord(String name, String dnaSequence)
@@ -35,5 +41,11 @@ namespace ImperativeUtilities
             var dna = dnaSequence.Select(c => Bio.DNA.ParseDNACharacter(c));
             return new Bio.DNA.DNARecord(name, dna);
         }
+    }
+
+    public class Record
+    {
+        public String Name { get; set; }
+        public String Str { get; set; }
     }
 }

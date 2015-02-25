@@ -4,7 +4,7 @@ open Utilities
 
 [<EntryPoint>]
 let main argv = 
-    let dnaString = Seq.nth 0 (Utilities.ParseLinesToRecords(System.IO.File.ReadAllLines("input.txt")))
+    let dnaString = Seq.nth 0 (Utilities.ParseLinesToDNARecords(System.IO.File.ReadAllLines("input.txt")))
     let inverseString = ReverseCompliment dnaString.DNAString
     let allStrings = [dnaString.DNAString; 
                       Seq.skip 1 dnaString.DNAString; 

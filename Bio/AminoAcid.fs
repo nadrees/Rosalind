@@ -3,6 +3,11 @@
 open Alphabets
 
 module AminoAcid =
+    type ProteinRecord = {
+        Name: string;
+        ProteinString: seq<AminoAcid>;
+    }
+
     let TryParseAminoAcid c =
         match c with
         | 'A' -> Some(AminoAcid.A)

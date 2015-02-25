@@ -15,7 +15,7 @@ let FilterPairs pair =
 
 [<EntryPoint>]
 let main argv = 
-    let answer = Utilities.ParseLinesToRecords(System.IO.File.ReadAllLines("input.txt")) 
+    let answer = Utilities.ParseLinesToDNARecords(System.IO.File.ReadAllLines("input.txt")) 
                  // map each record to a node with the prefix and suffix memoized
                  |> Seq.map (fun dna -> { DNARecord = dna; 
                                           Prefix = PrefixOfLength 3 dna.DNAString; 

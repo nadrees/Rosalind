@@ -26,7 +26,7 @@ let computeGCContent dnaRecord =
 [<EntryPoint>]
 let main argv = 
     let fileLines = System.IO.File.ReadAllLines("input.txt")
-    let records = Seq.map computeGCContent (Utilities.ParseLinesToRecords(fileLines))
+    let records = Seq.map computeGCContent (Utilities.ParseLinesToDNARecords(fileLines))
     let maxRecord = Seq.maxBy (fun r -> r.GCContent) records
     printfn "%s" maxRecord.dna.Name
     printfn "%f" (maxRecord.GCContent * 100.0)

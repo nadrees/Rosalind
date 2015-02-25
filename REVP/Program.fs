@@ -29,7 +29,7 @@ let getReversePalindromes (str : string) =
 [<EntryPoint>]
 let main argv = 
     let fileLines = System.IO.File.ReadAllLines("input.txt")
-    let dnaRecord = Seq.nth 0 (Utilities.ParseLinesToRecords(fileLines))
+    let dnaRecord = Seq.nth 0 (Utilities.ParseLinesToDNARecords(fileLines))
     let reversePalindromes = getReversePalindromes (Seq.PrintString dnaRecord.DNAString)
     System.IO.File.WriteAllLines("output.txt", List.map (fun x -> sprintf "%i %i" (x.StartPosition + 1) x.Length) reversePalindromes)
     0 // return an integer exit code
