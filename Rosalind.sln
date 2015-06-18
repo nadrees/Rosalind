@@ -70,6 +70,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SPLC", "SPLC\SPLC.fsproj", 
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Extensions", "Extensions\Extensions.fsproj", "{CDF9FE2E-2567-42A3-AEEF-4F2B86BB562D}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Bio.Tests", "Bio.Tests\Bio.Tests.fsproj", "{FED9503C-0DE4-4ACA-80B0-09FFFB64FF1E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -188,6 +190,10 @@ Global
 		{CDF9FE2E-2567-42A3-AEEF-4F2B86BB562D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDF9FE2E-2567-42A3-AEEF-4F2B86BB562D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDF9FE2E-2567-42A3-AEEF-4F2B86BB562D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FED9503C-0DE4-4ACA-80B0-09FFFB64FF1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FED9503C-0DE4-4ACA-80B0-09FFFB64FF1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FED9503C-0DE4-4ACA-80B0-09FFFB64FF1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FED9503C-0DE4-4ACA-80B0-09FFFB64FF1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
