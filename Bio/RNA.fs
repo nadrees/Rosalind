@@ -62,5 +62,8 @@ module RNA =
         | x ->
             RNASeqToRNACodons (Seq.take (length - x) rnaSeq)
 
+    let RNASeqToAminoAcids : (seq<RNA> -> seq<AminoAcid>) =
+        RNASeqToRNACodons >> Seq.map RNAtoAminoAcid
+
     let RNASeqToProteinStrings : (seq<RNA> -> seq<AminoAcid> list) = 
-        RNASeqToRNACodons >> Seq.map RNAtoAminoAcid >> Bio.AminoAcid.AcidSeqToProteinStrings
+        RNASeqToAminoAcids >> Bio.AminoAcid.AcidSeqToProteinStrings
